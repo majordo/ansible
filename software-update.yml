@@ -1,0 +1,17 @@
+---
+- hosts: docker2
+  tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      update_cache: yes
+      upgrade: yes
+    become: true
+    # --ask-become-pass
+
+
+    # - name: Update software repors
+    #   command: apt upgrade
+    #   become: yes
+    #   become_user: root
+    #   become_method: sudo
+      #  --extra-vars='ansible_become_pass=password'
