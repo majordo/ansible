@@ -1,7 +1,12 @@
 ---
-- hosts: all
+- name: CAS2 evm003 deploy 
+  hosts: all
+  gather_facts: no
   tasks:
-  - name: CAS pull
+  - name: DISPLAY THE INJECTED EXTRA VAR
+    debug:
+      var: secret_key
+  - name: CAS2 pull
     git:
       repo: https://emaxsrl.git.beanstalkapp.com/cas2.git
       dest: /data/volumes/cas2
