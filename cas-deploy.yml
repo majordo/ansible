@@ -3,14 +3,20 @@
   hosts: all
   gather_facts: no
   tasks:
-  - name: DISPLAY THE INJECTED EXTRA VAR
-    debug:
-      # var: repo_login
-      msg: repo_login {{ repo_login | urlencode }}, repo_psw {{ repo_psw | urlencode  }}
+  # - name: DISPLAY THE INJECTED EXTRA VAR
+  #   debug:
+  #     msg: repo_login {{ repo_login | urlencode }}, repo_psw {{ repo_psw | urlencode  }}
 
-  - name: pull changes
-    shell: chdir=/data/volumes/cas2 git pull https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git stage
+  # - name: pull changes
+  #   shell: chdir=/data/volumes/cas2 git pull https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git stage
 
+  - name: Git clone
+    expect:
+      command: chdir=/data/volumes/cas2 git pull
+      responses:
+        Username: "{{ repo_login }}" # Username is a regex
+        Password: "{{ repo_psw }}" # Password is a regex
+          
   # - name: CAS2 pull
   #   git:
   #     repo: https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git
