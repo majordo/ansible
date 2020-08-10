@@ -5,7 +5,7 @@
   tasks:
   - name: DISPLAY THE INJECTED EXTRA VAR
     debug:
-      var: secret_key
+      var: repo_login
   - name: CAS2 pull
     git:
       repo: https://emaxsrl.git.beanstalkapp.com/cas2.git
