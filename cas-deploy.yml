@@ -15,9 +15,8 @@
 
   - name: Git pull CAS2
     expect:
+      chdir: /data/volumes/cas2
       command: git pull
-      args:
-        chdir: /data/volumes/cas2
       responses:
         Username: "{{ repo_login }}" # Username is a regex
         Password: "{{ repo_psw }}" # Password is a regex  
