@@ -10,7 +10,7 @@
 
   - name: CAS2 pull
     git:
-      repo: https://emaxsrl.git.beanstalkapp.com/cas2.git
+      repo: https://{{repo_login}}:{{repo_psw}}@emaxsrl.git.beanstalkapp.com/cas2.git
       dest: /data/volumes/cas2
     # sudo_user: <your user that has the ssh key>
     # become: true
