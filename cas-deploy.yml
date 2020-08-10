@@ -1,5 +1,5 @@
 ---
-- name: CAS2 evm003 deploy 
+- name: CAS2 deploy@evm003
   hosts: all
   gather_facts: no
   tasks:
@@ -8,12 +8,19 @@
       # var: repo_login
       msg: repo_login {{ repo_login | urlencode }}, repo_psw {{ repo_psw | urlencode  }}
 
-  - name: CAS2 pull
-    git:
-      repo: https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git
-      dest: /data/volumes/cas2
-      update: yes
-      version: stage #branch 
+  - name: pull changes
+    shell: chdir=/data/volumes/cas2 git pull https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git stage
+
+  # - name: CAS2 pull
+  #   git:
+  #     repo: https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git
+  #     dest: /data/volumes/cas2
+  #     update: yes
+  #     accept_hostkey: yes
+  #     clone: no
+  #     force: yes
+  #     remote: origin
+  #     version: stage #branch 
     # sudo_user: <your user that has the ssh key>
     # become: true
     # --ask-become-pass
