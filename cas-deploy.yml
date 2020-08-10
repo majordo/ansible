@@ -10,9 +10,12 @@
   # - name: pull changes
   #   shell: chdir=/data/volumes/cas2 git pull https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git stage
 
-  - name: Git clone
+  - name: Go to CAS2 dit
+    shell: chdir=/data/volumes/cas2
+
+  - name: Git pull CAS2
     expect:
-      command: chdir=/data/volumes/cas2 git pull
+      command: git pull
       responses:
         Username: "{{ repo_login }}" # Username is a regex
         Password: "{{ repo_psw }}" # Password is a regex  
