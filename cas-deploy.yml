@@ -5,7 +5,9 @@
   tasks:
   - name: DISPLAY THE INJECTED EXTRA VAR
     debug:
-      var: repo_login
+      # var: repo_login
+      msg: repo_login {{ repo_login }}, repo_psw {{ repo_psw }}
+
   - name: CAS2 pull
     git:
       repo: https://emaxsrl.git.beanstalkapp.com/cas2.git
