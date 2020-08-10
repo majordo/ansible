@@ -30,7 +30,11 @@
   - name: Build front-end
     command: yarn build
     args:
-      chdir: /data/volumes/cas2/client      
+      chdir: /data/volumes/cas2/client
+
+  - name: Restart docker image
+    command: docker restart cas2
+                
 
   # - name: CAS2 pull
   #   git:
