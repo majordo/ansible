@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+  - name: CAS pull
+    git:
+      repo: https://emaxsrl.git.beanstalkapp.com/cas2.git
+      dest: /data/volumes/cas2
+    # sudo_user: <your user that has the ssh key>
+    # become: true
+    # --ask-become-pass
+
+
+    # - name: Update software repors
+    #   command: apt upgrade
+    #   become: yes
+    #   become_user: root
+    #   become_method: sudo
+      #  --extra-vars='ansible_become_pass=password'
