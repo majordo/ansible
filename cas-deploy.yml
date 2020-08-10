@@ -22,10 +22,15 @@
         Password: "{{ repo_psw }}" # Password is a regex  
     # no_log: true
 
-  - name: Build backend
+  - name: Build back-end
     command: yarn build
     args:
       chdir: /data/volumes/cas2/server
+
+  - name: Build front-end
+    command: yarn build
+    args:
+      chdir: /data/volumes/cas2/client      
 
   # - name: CAS2 pull
   #   git:
