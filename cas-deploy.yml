@@ -6,12 +6,14 @@
   - name: DISPLAY THE INJECTED EXTRA VAR
     debug:
       # var: repo_login
-      msg: repo_login {{ repo_login }}, repo_psw {{ repo_psw }}
+      msg: repo_login {{ repo_login | urlencode }}, repo_psw {{ repo_psw | urlencode  }}
 
   - name: CAS2 pull
     git:
-      repo: https://{{repo_login}}:{{repo_psw}}@emaxsrl.git.beanstalkapp.com/cas2.git
+      repo: https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git
       dest: /data/volumes/cas2
+      update: yes
+      version: stage #branch 
     # sudo_user: <your user that has the ssh key>
     # become: true
     # --ask-become-pass
