@@ -16,9 +16,9 @@
       responses:
         Username: "{{ repo_login }}" # Username is a regex
         Password: "{{ repo_psw }}" # Password is a regex  
-    no_log: true
+    # no_log: true
 
-    
+
   # - name: CAS2 pull
   #   git:
   #     repo: https://{{ repo_login | urlencode }}:{{ repo_psw | urlencode }}@emaxsrl.git.beanstalkapp.com/cas2.git
